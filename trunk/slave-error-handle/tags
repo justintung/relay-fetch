@@ -1,0 +1,244 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+APPEND_BLOCK_EVENT	seh.h	/^  APPEND_BLOCK_EVENT= 9,$/;"	e	enum:Log_event_type
+BEGIN_LOAD_QUERY_EVENT	seh.h	/^  BEGIN_LOAD_QUERY_EVENT= 17,$/;"	e	enum:Log_event_type
+BIN_LOG_HEADER_SIZE	seh.h	99;"	d
+CEILING	seh.h	/^{TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}$/;"	e	enum:__anon1
+CREATE_FILE_EVENT	seh.h	/^  CREATE_FILE_EVENT= 8,$/;"	e	enum:Log_event_type
+DEBUG	seh.h	98;"	d
+DECIMAL_BUFF_LENGTH	seh.h	153;"	d
+DECIMAL_MAX_POSSIBLE_PRECISION	seh.h	154;"	d
+DECIMAL_MAX_PRECISION	seh.h	155;"	d
+DELETE_FILE_EVENT	seh.h	/^  DELETE_FILE_EVENT= 11,$/;"	e	enum:Log_event_type
+DELETE_ROWS_EVENT	seh.h	/^  DELETE_ROWS_EVENT = 25,$/;"	e	enum:Log_event_type
+DIG_BASE	seh.h	130;"	d
+DIG_BASE2	seh.h	132;"	d
+DIG_MASK	seh.h	129;"	d
+DIG_MAX	seh.h	131;"	d
+DIG_PER_DEC1	seh.h	128;"	d
+ENUM_END_EVENT	seh.h	/^  ENUM_END_EVENT \/* end marker *\/$/;"	e	enum:Log_event_type
+EVENT_INTERVAL	seh.h	107;"	d
+EVENT_LEN_OFFSET	seh.h	90;"	d
+EVENT_TYPE_OFFSET	seh.h	88;"	d
+EXECUTE_LOAD_QUERY_EVENT	seh.h	/^  EXECUTE_LOAD_QUERY_EVENT= 18,$/;"	e	enum:Log_event_type
+EXEC_LOAD_EVENT	seh.h	/^  EXEC_LOAD_EVENT= 10,$/;"	e	enum:Log_event_type
+E_DEC_BAD_NUM	seh.h	147;"	d
+E_DEC_DIV_ZERO	seh.h	146;"	d
+E_DEC_ERROR	seh.h	150;"	d
+E_DEC_FATAL_ERROR	seh.h	151;"	d
+E_DEC_OK	seh.h	143;"	d
+E_DEC_OOM	seh.h	148;"	d
+E_DEC_OVERFLOW	seh.h	145;"	d
+E_DEC_TRUNCATED	seh.h	144;"	d
+FIX_INTG_FRAC_ERROR	seh.h	157;"	d
+FLAGS_OFFSET	seh.h	92;"	d
+FLOOR	seh.h	/^{TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}$/;"	e	enum:__anon1
+FORMAT_DESCRIPTION_EVENT	seh.h	/^  FORMAT_DESCRIPTION_EVENT= 15,$/;"	e	enum:Log_event_type
+HALF_EVEN	seh.h	/^{TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}$/;"	e	enum:__anon1
+HALF_UP	seh.h	/^{TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}$/;"	e	enum:__anon1
+INCIDENT_EVENT	seh.h	/^  INCIDENT_EVENT= 26,$/;"	e	enum:Log_event_type
+INSERT_UNPACK	seh.c	/^INSERT_UNPACK$/;"	e	enum:__anon5	file:
+INT64_LEN	seh.h	104;"	d
+INTVAR_EVENT	seh.h	/^  INTVAR_EVENT= 5,$/;"	e	enum:Log_event_type
+ITEM_LEN	seh.h	222;"	d
+LOAD_EVENT	seh.h	/^  LOAD_EVENT= 6,$/;"	e	enum:Log_event_type
+LOCAL_BASE_DIR	seh.h	/^const char *LOCAL_BASE_DIR;$/;"	v
+LOG_EVENT_MINIMAL_HEADER_LEN	seh.h	87;"	d
+LOG_POS_INIT	seh.h	102;"	d
+LOG_POS_OFFSET	seh.h	91;"	d
+Log_event_type	seh.h	/^enum Log_event_type$/;"	g
+MAX_PK	seh.h	109;"	d
+MAX_SLAVE_NUM	seh.c	45;"	d	file:
+MAX_STRING_LEN	seh.h	106;"	d
+NEW_LOAD_EVENT	seh.h	/^  NEW_LOAD_EVENT= 12,$/;"	e	enum:Log_event_type
+N_STATS_ITV	seh.h	223;"	d
+POSFILE_POS_SIZE	seh.h	101;"	d
+POSFILE_STR_LEN_SIZE	seh.h	103;"	d
+PRE_GA_DELETE_ROWS_EVENT	seh.h	/^  PRE_GA_DELETE_ROWS_EVENT = 22,$/;"	e	enum:Log_event_type
+PRE_GA_UPDATE_ROWS_EVENT	seh.h	/^  PRE_GA_UPDATE_ROWS_EVENT = 21,$/;"	e	enum:Log_event_type
+PRE_GA_WRITE_ROWS_EVENT	seh.h	/^  PRE_GA_WRITE_ROWS_EVENT = 20,$/;"	e	enum:Log_event_type
+PROBE_HEADER_LEN	seh.h	100;"	d
+QUERY_EVENT	seh.h	/^  QUERY_EVENT= 2,$/;"	e	enum:Log_event_type
+RAND_EVENT	seh.h	/^  RAND_EVENT= 13,$/;"	e	enum:Log_event_type
+RECORDLEN	seh.c	23;"	d	file:
+ROTATE_EVENT	seh.h	/^  ROTATE_EVENT= 4,$/;"	e	enum:Log_event_type
+ROUND_UP	seh.h	133;"	d
+SELECT_UNPACK	seh.c	/^SELECT_UNPACK,$/;"	e	enum:__anon5	file:
+SERVER_ID_OFFSET	seh.h	89;"	d
+SLAVE_EVENT	seh.h	/^  SLAVE_EVENT= 7,$/;"	e	enum:Log_event_type
+SLEEP_TIME	seh.c	24;"	d	file:
+SLOT_ITEMS	seh.h	221;"	d
+START_EVENT_V3	seh.h	/^  START_EVENT_V3= 1,$/;"	e	enum:Log_event_type
+STOP_EVENT	seh.h	/^  STOP_EVENT= 3,$/;"	e	enum:Log_event_type
+TABLE_MAP_EVENT	seh.h	/^  TABLE_MAP_EVENT = 19,$/;"	e	enum:Log_event_type
+THREAD_STACK_SIZE	seh.h	105;"	d
+TMPLEN	seh.c	1106;"	d	file:
+TRUNCATE	seh.h	/^{TRUNCATE=0, HALF_EVEN, HALF_UP, CEILING, FLOOR}$/;"	e	enum:__anon1
+UCHAR	seh.c	25;"	d	file:
+UNKNOWN_EVENT	seh.h	/^  UNKNOWN_EVENT= 0,$/;"	e	enum:Log_event_type
+UPDATE_ROWS_EVENT	seh.h	/^  UPDATE_ROWS_EVENT = 24,$/;"	e	enum:Log_event_type
+USER_VAR_EVENT	seh.h	/^  USER_VAR_EVENT= 14,$/;"	e	enum:Log_event_type
+WRITE_ROWS_EVENT	seh.h	/^  WRITE_ROWS_EVENT = 23,$/;"	e	enum:Log_event_type
+XID_EVENT	seh.h	/^  XID_EVENT= 16,$/;"	e	enum:Log_event_type
+_GNU_SOURCE	seh.h	19;"	d
+_RELAY_FETCH_H_	seh.h	18;"	d
+assert	seh.h	40;"	d
+autoinc_id	seh.h	/^    const char *autoinc_id;$/;"	m	struct:__anon4
+bin2decimal	seh.c	/^int bin2decimal(const uchar *from, decimal_t *to, int precision, int scale)$/;"	f
+bin_pos	seh.c	/^   long long int bin_pos;$/;"	m	struct:slave_info_st	file:
+buf	seh.h	/^  decimal_digit_t *buf;$/;"	m	struct:st_decimal_t
+buffer	seh.h	/^char ***buffer;$/;"	v
+cnf_file	seh.h	/^    const char *cnf_file;$/;"	m	struct:__anon4
+col_name	seh.h	/^    char col_name[200];$/;"	m	struct:col_type
+col_type	seh.h	/^    int  col_type;$/;"	m	struct:col_type
+col_type	seh.h	/^typedef struct col_type{$/;"	s
+col_type	seh.h	/^} col_type;$/;"	t	typeref:struct:col_type
+cols	seh.h	/^    int cols;$/;"	m	struct:schema_info_st
+column	seh.h	/^    col_type column[1024];$/;"	m	struct:schema_info_st
+conf	seh.h	/^    char *conf;$/;"	m	struct:__anon4
+connect_mysql	seh.c	/^int connect_mysql(MYSQL* mysql, char *db, int port) $/;"	f
+count	seh.h	/^    int count;$/;"	m	struct:__anon4
+create_thread	seh.c	/^int create_thread(pthread_t* tid, void* (*func) (void *), void * args)$/;"	f
+daemon	seh.h	/^    int daemon;$/;"	m	struct:__anon4
+database	seh.h	/^    const char *database;$/;"	m	struct:mysql_info_st
+db	seh.h	/^    char db[200];$/;"	m	struct:schema_info_st
+debug	seh.h	/^    int debug;$/;"	m	struct:__anon4
+dec1	seh.h	/^typedef decimal_digit_t dec1;$/;"	t
+dec2	seh.h	/^typedef longlong      dec2;$/;"	t
+decimal2string	seh.c	/^int decimal2string(const decimal_t *from, char *to, int *to_len,$/;"	f
+decimal_bin_size	seh.c	/^int decimal_bin_size(int precision, int scale)$/;"	f
+decimal_digit_t	seh.h	/^typedef int32 decimal_digit_t;$/;"	t
+decimal_make_zero	seh.h	197;"	d
+decimal_round_mode	seh.h	/^  decimal_round_mode;$/;"	t	typeref:enum:__anon1
+decimal_t	seh.h	/^} decimal_t;$/;"	t	typeref:struct:st_decimal_t
+decimals	seh.h	/^    int decimals;$/;"	m	struct:col_type
+def_pos	seh.h	/^    int def_pos;$/;"	m	struct:reader
+dig2bytes	seh.h	/^static const int dig2bytes[DIG_PER_DEC1+1]={0, 1, 1, 2, 2, 3, 3, 4, 4, 4};$/;"	v
+distance	seh.h	/^    long long distance;$/;"	m	struct:reader
+dry_run	seh.h	/^    int dry_run;$/;"	m	struct:__anon4
+err	seh.c	/^   int           err;   $/;"	m	struct:slave_info_st	file:
+err_str	seh.c	/^   char err_str[2000];$/;"	m	struct:slave_info_st	file:
+file_num	seh.c	/^   int           file_num;$/;"	m	struct:slave_info_st	file:
+fix_in_process	seh.c	/^   int           fix_in_process;$/;"	m	struct:slave_info_st	file:
+fp_stdout	seh.h	/^FILE *fp_stdout;$/;"	v
+frac	seh.h	/^  int    intg, frac, len;$/;"	m	struct:st_decimal_t
+frac_max	seh.h	/^static const dec1 frac_max[DIG_PER_DEC1-1]={$/;"	v
+get_byte_by_length	seh.c	/^int get_byte_by_length(long long length)$/;"	f
+get_columns_info	seh.c	/^int get_columns_info(slave_info_st *si, schema_info_st* schema, char * tb)$/;"	f
+get_curr_time	seh.c	/^static inline void get_curr_time(char *result) {$/;"	f	file:
+get_options	seh.c	/^int get_options(int argc, char *argv[]) {$/;"	f
+get_relaylog_num	seh.c	/^static inline long long get_relaylog_num(const char *str)$/;"	f	file:
+group	seh.h	/^    int group;$/;"	m	struct:schema_info_st
+ha_error	seh.h	/^    int ha_error;$/;"	m	struct:__anon4
+handle_1032_error	seh.c	/^int handle_1032_error(slave_info_st * si)$/;"	f
+handle_1062_error	seh.c	/^int handle_1062_error(slave_info_st *si)$/;"	f
+handle_slave_error	seh.c	/^void *handle_slave_error()$/;"	f
+has_pk	seh.h	/^    int has_pk;$/;"	m	struct:schema_info_st
+head	seh.h	/^    int head;$/;"	m	struct:__anon2
+host	seh.h	/^    char host[200];$/;"	m	struct:reader
+host	seh.h	/^    const char* host;$/;"	m	struct:mysql_info_st
+id	seh.h	/^    int  id;$/;"	m	struct:col_type
+index	seh.h	/^    int index;$/;"	m	struct:__anon3
+init_dec	seh.c	/^int init_dec(decimal_t *dec)$/;"	f
+init_file	seh.c	/^int init_file()$/;"	f
+init_setting	seh.c	/^int init_setting() $/;"	f
+init_slave	seh.c	/^int init_slave()$/;"	f
+init_slave_slot	seh.c	/^int init_slave_slot(slave_info_st * info)$/;"	f
+insert_or_delete_for_error	seh.c	/^int insert_or_delete_for_error(char *sql, int type , int port)$/;"	f
+intg	seh.h	/^  int    intg, frac, len;$/;"	m	struct:st_decimal_t
+is_part	seh.h	/^    int is_part;$/;"	m	struct:__anon4
+is_pk	seh.h	/^    int  is_pk;$/;"	m	struct:col_type
+is_sign	seh.h	/^    int  is_sign;$/;"	m	struct:col_type
+is_success	seh.c	/^   int           is_success;$/;"	m	struct:slave_info_st	file:
+len	seh.h	/^  int    intg, frac, len;$/;"	m	struct:st_decimal_t
+length	seh.h	/^    long long  length;$/;"	m	struct:col_type
+limit	seh.h	/^    ulonglong limit;$/;"	m	struct:__anon4
+logdir	seh.h	/^    char *logdir;$/;"	m	struct:__anon4
+logfile	seh.h	/^    const char *logfile;$/;"	m	struct:__anon4
+loops	seh.h	/^    int loops;$/;"	m	struct:__anon2
+main	seh.c	/^int main(int argc, char * argv[]) $/;"	f
+mi_sint1korr	seh.h	178;"	d
+mi_sint2korr	seh.h	181;"	d
+mi_sint3korr	seh.h	183;"	d
+mi_sint4korr	seh.h	191;"	d
+mi_sint8korr	seh.h	195;"	d
+mi_uint1korr	seh.h	179;"	d
+mode	seh.h	/^    int mode;$/;"	m	struct:__anon4
+monitor	seh.h	/^    int monitor;$/;"	m	struct:__anon4
+my_printf	seh.c	69;"	d	file:
+mysql	seh.h	/^    MYSQL mysql;$/;"	m	struct:__anon3
+mysql	seh.h	/^    MYSQL mysql;$/;"	m	struct:reader
+mysql_info_st	seh.h	/^typedef struct mysql_info_st {$/;"	s
+mysql_info_st	seh.h	/^} mysql_info_st;$/;"	t	typeref:struct:mysql_info_st
+n_modify	seh.h	/^    int n_modify;$/;"	m	struct:schema_info_st
+n_schema	seh.h	/^    int n_schema;$/;"	m	struct:__anon4
+n_worker	seh.h	/^    int n_worker;$/;"	m	struct:__anon4
+name	seh.h	/^    const char* name;$/;"	m	struct:mysql_info_st
+node	seh.h	/^node_t *node;$/;"	v
+node_t	seh.h	/^} node_t;$/;"	t	typeref:struct:__anon2
+os_thread_sleep	seh.c	/^int os_thread_sleep(long int  tm) $/;"	f
+password	seh.h	/^    char *password;$/;"	m	struct:__anon4
+password	seh.h	/^    const char* password;$/;"	m	struct:mysql_info_st
+path	seh.c	/^   char path[500];$/;"	m	struct:slave_info_st	file:
+path	seh.h	/^    char path[500];$/;"	m	struct:reader
+pidfile	seh.h	/^    const char *pidfile;$/;"	m	struct:__anon4
+port	seh.c	/^   int port;$/;"	m	struct:slave_info_st	file:
+port	seh.h	/^    int port;$/;"	m	struct:__anon4
+port	seh.h	/^    short port;$/;"	m	struct:mysql_info_st
+powers10	seh.h	/^static const dec1 powers10[DIG_PER_DEC1+1]={$/;"	v
+read_event_from_relay	seh.c	/^int read_event_from_relay(int fd, char *buf)$/;"	f
+read_file	seh.c	/^int read_file(int fd, char* buf, int length)$/;"	f
+reader	seh.h	/^typedef struct reader {$/;"	s
+reader_st	seh.h	/^} reader_st;$/;"	t	typeref:struct:reader
+record_table_info	seh.c	/^schema_info_st* record_table_info(slave_info_st *info, char *db, char *tb)$/;"	f
+relayNum	seh.h	/^    int  relayNum;$/;"	m	struct:reader
+relayPos	seh.h	/^    ulonglong relayPos;$/;"	m	struct:reader
+remove_leading_zeroes	seh.c	/^static dec1 *remove_leading_zeroes(const decimal_t *from, int *intg_result)$/;"	f	file:
+rf_kill	seh.c	/^int rf_kill()$/;"	f
+rf_logfile_mutex	seh.c	/^pthread_mutex_t   rf_logfile_mutex;$/;"	v
+running	seh.h	/^    int running;$/;"	m	struct:__anon4
+schema_info_st	seh.h	/^typedef struct schema_info_st {$/;"	s
+schema_info_st	seh.h	/^} schema_info_st;$/;"	t	typeref:struct:schema_info_st
+seconds_behind	seh.h	/^    int seconds_behind;$/;"	m	struct:__anon4
+seconds_behind	seh.h	/^    int seconds_behind;$/;"	m	struct:reader
+sem_post	seh.h	39;"	d
+sem_wait	seh.h	38;"	d
+sems_empty	seh.h	/^sem_t *sems_empty;$/;"	v
+sems_full	seh.h	/^sem_t *sems_full;$/;"	v
+server_id	seh.h	/^    int server_id;$/;"	m	struct:mysql_info_st
+setting	seh.c	/^static setting_st   setting;$/;"	v	file:
+setting_st	seh.h	/^}setting_st;$/;"	t	typeref:struct:__anon4
+sign	seh.h	/^  my_bool sign;$/;"	m	struct:st_decimal_t
+slaveNum	seh.h	/^    int  slaveNum;$/;"	m	struct:reader
+slavePos	seh.h	/^    ulonglong slavePos;$/;"	m	struct:reader
+slave_cmd	seh.c	/^   char slave_cmd[1000];;$/;"	m	struct:slave_info_st	file:
+slave_cmd	seh.c	/^static char slave_cmd[1000];$/;"	v	file:
+slave_info_st	seh.c	/^typedef struct slave_info_st{$/;"	s	file:
+slave_info_st	seh.c	/^} slave_info_st;$/;"	t	typeref:struct:slave_info_st	file:
+slave_num	seh.h	/^    int slave_num;$/;"	m	struct:__anon4
+slave_queue	seh.c	/^slave_info_st slave_queue[MAX_SLAVE_NUM];$/;"	v
+socket	seh.h	/^    char *socket;$/;"	m	struct:__anon4
+st_decimal_t	seh.h	/^typedef struct st_decimal_t {$/;"	s
+start_slave	seh.c	/^int start_slave(int port)$/;"	f
+table	seh.h	/^    const char *table;$/;"	m	struct:mysql_info_st
+tail	seh.h	/^    int tail;$/;"	m	struct:__anon2
+tb	seh.h	/^    char tb[200];$/;"	m	struct:schema_info_st
+tb_num	seh.h	/^    int tb_num;$/;"	m	struct:schema_info_st
+tid	seh.c	/^   pthread_t tid;$/;"	m	struct:slave_info_st	file:
+tid	seh.h	/^    pthread_t tid;$/;"	m	struct:__anon3
+tid	seh.h	/^    pthread_t tid;$/;"	m	struct:reader
+time_buf	seh.c	/^static char time_buf[256];                             $/;"	v	file:
+trx_err_pos	seh.c	/^   long long int trx_err_pos;$/;"	m	struct:slave_info_st	file:
+trx_start_pos	seh.c	/^   long long int trx_start_pos;$/;"	m	struct:slave_info_st	file:
+unpack_record	seh.c	/^const char*  unpack_record(const char *ptr, schema_info_st * schema,  $/;"	f
+update_slave_status	seh.c	/^int update_slave_status(slave_info_st* si)$/;"	f
+usage	seh.c	/^void usage() {$/;"	f
+user	seh.h	/^    char *user;$/;"	m	struct:__anon4
+user	seh.h	/^    const char* user;$/;"	m	struct:mysql_info_st
+version	seh.h	/^    int version;$/;"	m	struct:reader
+worker	seh.h	/^} worker;$/;"	t	typeref:struct:__anon3
+year_2000_handling	seh.c	/^uint year_2000_handling(uint year)$/;"	f

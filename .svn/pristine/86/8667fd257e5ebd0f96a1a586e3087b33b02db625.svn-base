@@ -1,0 +1,144 @@
+==目录==
+
+  [http://code.google.com/p/relay-fetch/wiki/README#一、背景 一、背景]<br>
+  [http://code.google.com/p/relay-fetch/wiki/README#二、实现原理 二、实现原理]<br>
+  [http://code.google.com/p/relay-fetch/wiki/README#三、特点 三、特点]<br>
+  [http://code.google.com/p/relay-fetch/wiki/README#四、性能测试 四、性能测试]<br>
+  [http://code.google.com/p/relay-fetch/wiki/README#五、限制 五、限制]<br>
+  [http://code.google.com/p/relay-fetch/wiki/README#六、使用 六、使用]
+
+==一、背景==
+
+MySQL通过binlog来实现主库和备库间的数据备份。在主库上，所有的更改操作备记录到binlog中，从库上有两个工作线程，IO线程读取主库上的binlog，并存储到本地relay log文件中，SQL线程从relay log读取记录，在备库上执行更改。<br>
+
+我们知道，MySQL是多线程并发的，其主库上的多线程操作必然会引起大量的随机读；但备库上却仅有一个SQL线程来执行更改，每次执行更改前都需要将相应的数据加载到内存中。由备库单线程来承载主库多线程的压力，当主库压力稍大时，备库自然会产生延时。<br>
+
+显而易见，当数据文件远大于buffer pool时，备库SQL线程是IO BOUND的。目前已经有一些预热工具来解决这个问题，例如mk-slave-prefetch；这些工具的实现思想都一样，就是将binlog里记录的更改操作转换为select操作。<br>
+
+目前诸如[http://www.maatkit.org/bugs/mk-slave-prefetch mk-slave-prefetch]及[http://dom.as/2011/12/03/replication-prefetching/ replication-prefetch]等。但目前开源社区类似的工具仅支持statement模式，为了不重复发明轮子，relayfetch仅支持binlog row模式。<br>
+
+==二、实现原理==
+
+基本思路：在备库sql线程执行更新之前，预先将相应的数据加载到内存中 <br>
+一个大致的实现框架图如下所示：<br>
+[http://relay-fetch.googlecode.com/files/a.jpg]
+
+relayfetch使用多线程，包括1个reader线程和N个worker线程
+
+===1.reader线程的执行流程===
+
+
+1). 读取本地的relay log文件，获取日志中的事件；
+
+2). 将row数据解析出来，获得其中的Primary key值；
+
+3). 根据Primary key转换成对应库表的select语句，依次分发给N个队列（N可配置，也表示worker线程数）；
+
+4). 每从relay log中读取count个事件（5000&lt;count&lt;10000，动态调整）后，会做如下判断：
+
+   a)当前备库延时secounds_behind_master低于设定值(使用–a指定，默认为1秒)时，进入sleep；
+
+   b)当前reader线程读relay log的位置超过SQL线程执行Position大于设定值时（使用-s指定，默认为1M），进入sleep
+
+5). 当读到文件尾时（rotate事件），等待sql线程;
+
+6). goto 1)。
+
+
+===2.worker线程===
+每个worker线程循环读取其对应队列中记录的sql，并在备库上执行。<br>
+
+
+==三、特点==
+
+1. 在延时不超过设定值时，对备库正常的读操作基本无影响；当延时太大时，会执行大量的select来为sql线程提速。总的来说，整个程序会执行如下SQL：<br>
+a) show slave status （自适应调整，3~10s）<br>
+b) select from .. where pk=? （延迟时运行，高频率）<br>
+c) show columns from (启动时运行) <br>
+d) select `*` from .... limit 1 (启动时运行)<br>
+e) show databses/show tables（启动时运行）<br>
+
+因此,relayfetch对mysql服务器而言是安全的。<br>
+
+2. 读relay log太快时，会停止等待slave sql线程跟上，避免刚读进来的数据很快又被替换掉。<br>
+3. 代码简单量少。<br>
+4. 使用sysbench测试时，在使用预热工具和不使用的情况下，约有1-2倍的复制速度提升。<br>
+5. Relayfetch可在备库延迟较大时临时启用，或者作为备库的标准配置放在后台运行。<br>
+
+
+==四、性能测试==
+
+===1. 测试环境===
+
+a) Mysql版本：5.1.48；<br>
+b) 内存8G；CPU：4*2493.749<br>
+c) 操作系统：Red Hat Enterprise Linux Server release 5.4；<br>
+d) 使用sysbench,2000W数据。文件大小4.7G； 
+
+===2. 测试方案===
+
+测试relayfetch在不同buffer pool size/data size比例值下，对sql线程执行速度有多大的提升<br>
+
+正常情况<br>
+a) stop slave sql_thread <br>
+b) 运行sysbench(max-requests:1W、2W、4W、6W、8W、10W、12W) <br>
+c) 完成sysbench后start slave sql_thread<br>
+d) 采集数据，等待执行完成
+
+With relay-fetch<br>
+a) stop slave sql_thread <br>
+b) 运行sysbench<br>
+c) 完成sysbench后start slave sql_thread 再运行 ./relayfetch -uroot <br>
+d) 采集数据，等待执行完成
+
+===3.测试结果===
+
+x轴表示耗费的时间数<br>
+y轴为sysbench的--max-requests参数值，代表最大请求数
+
+a) buffer pool：100M （100M/4.7G = 2%）<br> 
+[http://relay-fetch.googlecode.com/files/bp-100m.jpg]
+b) buffer pool： 250M (250M/4.7G = 5%)<br> 
+[http://relay-fetch.googlecode.com/files/bp-250m.jpg]
+c) buffer pool： 500M (500M/4.7G = 10%)<br> 
+[http://relay-fetch.googlecode.com/files/bp-500m.jpg]
+d) buffer pool：1G (1G/4.7G = 20%)<br> 
+[http://relay-fetch.googlecode.com/files/bp-1g.jpg]
+
+
+==五、限制==
+
+1. 目前仅支持主库binlog ROW模式<br>
+2. 需要有主键<br>
+3. 忽略test和mysql数据库<br>
+4. 如果您的数据库中存在类似tbname_1、tbname_2这样命名的多个表，但其表模式却不相同时，请加上-t选项<br>
+例如，tb_1、tb_2、tb_3这样命名的3个表，默认情况下，被认为是同样模式的表，这主要是为了适应我们的数据库环境<br>
+5. 默认最多支持10000个用户表，如果您需要支持更多的表，可以通过修改宏MAX_TABLE_NUM来进行调整。<br>
+
+==六、使用==
+
+1. 获取代码：<br>svn checkout http://relay-fetch.googlecode.com/svn/trunk/ relay-fetch-read-only<br>
+
+2. make<br>
+
+3. 运行: ./relayfetch -h来获取选项<br>
+
+主要选项包括：<br>
+-d debug<br>
+-D 后台运行<br>
+-p 密码<br>
+-u 用户名，请以root用户运行<br>
+-P mysqld端口号<br>
+-s 整数，单位为M，当read线程超过sql线程position这么多字节数时，会等待sql线程，默认为1M<br>
+-S mysql sock文件路径<br>
+-n worker线程数目。默认为5<br>
+-a 当seconds_behind_master大于这个值时，会唤醒relayfetch,默认为1s<br>
+-t 当使用该选项时，表明不使用分表规则（例如，表name_1 和表name_2会被视为同一类表）<br>
+
+我们可以通过端口号来运行<br>
+
+./relayfetch -uroot -t -P3306<br>
+
+或者通过sock来运行<br>
+
+./relayfetch -S /u01/mysql/run/mysql.sock -uroot<br><br>
